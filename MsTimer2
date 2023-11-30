@@ -1,0 +1,18 @@
+#include <MsTimer2.h>
+void Light();
+const int myPin = 13;
+void setup() {
+  pinMode(myPin, OUTPUT);
+  Serial.begin(9600);
+  MsTimer2::set(500, Light);
+  MsTimer2::start();
+}
+void loop(){
+}
+volatile boolean abc = 1;
+void Light() {
+  static int a = analogRead(A0);
+  Serial.println(a);
+  digitalWrite(myPin, abc);
+  abc=!abc;
+}
